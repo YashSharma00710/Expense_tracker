@@ -6,6 +6,12 @@ The application allows users to add expenses, organize them by category, and vie
 
 > **Note:** This is a basic version of the project. A more advanced version with **Razorpay payment integration** and additional features is planned for the future.
 
+## 📌 Project Status
+
+**Current Status:** Basic Expense Tracker
+
+**Future Version:** Expense Tracker with Razorpay integration and additional financial tracking features.
+
 ## ✨ Features
 
 * ➕ Add new expenses
@@ -58,11 +64,6 @@ This project was created to practice and improve my understanding of:
 * Creating reusable UI components
 * Building a practical full-stack application
 
-## 📌 Project Status
-
-**Current Status:** Basic Expense Tracker
-
-**Future Version:** Expense Tracker with Razorpay integration and additional financial tracking features.
 
 ## 👨‍💻 Author
 
