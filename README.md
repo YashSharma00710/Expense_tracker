@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 💰 Expense Tracker
 
-## Getting Started
+A simple and beginner-friendly **Expense Tracker** built to practice building a practical web application with expense management and tracking features.
 
-First, run the development server:
+The application allows users to add expenses, organize them by category, and view their spending through a simple dashboard.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+> **Note:** This is a basic version of the project. A more advanced version with **Razorpay payment integration** and additional features is planned for the future.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ✨ Features
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+* ➕ Add new expenses
+* 📊 View total spending
+* 📅 Track spending for the current month
+* 🏷️ Categorize expenses
+* 📋 View recent transactions
+* 🔍 Filter transactions by category
+* 💰 Display expense amounts in Indian Rupees (₹)
+* 🎨 Clean and responsive dashboard UI
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🛠️ Tech Stack
 
-## Learn More
+* **Next.js**
+* **React**
+* **JavaScript**
+* **Tailwind CSS**
+* **MongoDB**
+* **Mongoose**
 
-To learn more about Next.js, take a look at the following resources:
+## 📸 Preview
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+![Expense Tracker Dashboard](./public/Screenshot%202026-08-21%20010614.png)
+![Adding Expense ](./public/Screenshot%202026-08-21%20010417.png)
+![Categories Selection](./public/Screenshot%202026-08-21%20010707.png)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🚀 Future Improvements
 
-## Deploy on Vercel
+This project is currently a basic expense tracking application. I plan to improve it by adding more advanced features, including:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+* 💳 **Razorpay integration**
+* 💸 Payment-based expense tracking
+* 📈 Advanced spending analytics
+* 📊 Charts and visual reports
+* 🔐 User authentication
+* 🗂️ More advanced filtering and sorting
+* 📱 Further UI/UX improvements
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The goal is to eventually turn this into a more complete **expense and payment tracking application** using Razorpay.
+
+## 🎯 Purpose of the Project
+
+This project was created to practice and improve my understanding of:
+
+* React and Next.js
+* State management
+* Forms and user input
+* Working with APIs
+* MongoDB database operations
+* Creating reusable UI components
+* Building a practical full-stack application
+
+## 📌 Project Status
+
+**Current Status:** Basic Expense Tracker
+
+**Future Version:** Expense Tracker with Razorpay integration and additional financial tracking features.
+
+## 👨‍💻 Author
+
+**Yash Sharma**
+
+GitHub: [YashSharma00710](https://github.com/YashSharma00710)
