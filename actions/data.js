@@ -11,15 +11,32 @@ export const Data = async () => {
 
 export const Category = async () => {
     await connetDB();
-    let data = await Expense.find({}, { category: 1 })
+    // let data = await Expense.find({}, { category: 1 })
     // console.log(data)
     let newobj = []
-    let newarr = data.filter((i) => {
-        if (!(newobj.includes(i.category))) {
-            newobj.push(i.category)
-            return i
+    // let newarr = data.filter((i) => {
+    //     if (!(newobj.includes(i.category))) {
+    //         newobj.push(i.category)
+    //         return i
+    //     }
+    // })
+    let data = await Expense.aggregate([
+        {
+            $group: {
+                _id: null,
+                data: {
+                    $addToSet: "$category"
+                }
+            }
+        },
+        {
+            $project: {
+                _id: 0,
+                data: 1
+            }
         }
-    })
-    // console.log(newarr)
-    return JSON.parse(JSON.stringify(newarr));
+    ])
+    // console.log(data[0].data)
+    let uniqueData=data[0].data
+    return uniqueData;
 }

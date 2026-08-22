@@ -9,7 +9,7 @@ export const POST = async (req) => {
     const data = await req.json();
 
     console.log("data:", data)
-    let db = await Expense.create(data)
+    await Expense.create(data)
     // let data = await Expense.create(req.json)
     return NextResponse.text("received");
 }

@@ -33,7 +33,7 @@ export default function Home() {
   const sendData = async () => {
     console.log(form)
     console.log("clicked the submit btn")
-    if (form.category && form.note && form.amount) {
+    if (form?.category && form?.note && form?.amount) {
       let response = await fetch("api/expense", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -63,22 +63,16 @@ export default function Home() {
 
   const month = new Date().getMonth()
 
-  const getexpenses = () => {
-    console.log(expense)
-    if (!(expense.length > 0)) {
-      const list = async () => {
-        let data = await Data()
-        setexpense(data)
-      }
-      list()
-    }
-    else {
-      const list = async () => {
-        let data = await Data()
-        setexpense(data)
-      }
-      list()
-    }
+  const getexpenses = async () => {
+    console.log("1. getexpenses started")
+
+    let data = await Data()
+
+    console.log("2. Data received:", data)
+
+    setexpense(data)
+
+    console.log("3. setexpense called")
   }
 
   useEffect(() => {
@@ -86,6 +80,7 @@ export default function Home() {
   }, [])
 
   useEffect(() => {
+    console.log("4. expense changed:", expense)
     let total = expense.reduce((acc, curr) => acc + Number(curr.amount), 0)
     settotal(total)
 
@@ -126,6 +121,7 @@ export default function Home() {
     const callingcate = async () => {
       let newdata = await Category()
       // console.log(newdata)
+      console.log(newdata)
       setcategory(newdata)
     }
     callingcate()
@@ -158,13 +154,13 @@ export default function Home() {
         transition={Bounce}
       />
       <div className="min-h-screen bg-[#1F1A47]">
-        <div className="title relative mx-auto bg-[#2c204e] w-[70%] min-h-[85vh] my-10 p-10 flex flex-col rounded-2xl gap-3">
-          <div className="w-full flex justify-between ">
-            <span className="text-3xl font-extrabold">
+        <div className="title relative mx-auto bg-[#2c204e] w-[70%] min-h-[85vh] my-10 p-10 flex flex-col rounded-2xl gap-3 max-[630px]:w-[90%] max-[630px]:p-4">
+          <div className="w-full flex justify-between max-[830]:flex-col max-[830px]:items-center">
+            <span className="text-3xl font-extrabold max-[630px]:text-xl">
               Expense Tracker
             </span>
             <span>
-              <button className="text-[17] border py-2 px-7 rounded-xl font-bold flex justify-center cursor-pointer items-center gap-2" onClick={setpopwindow}>
+              <button className="text-[17px] max-[630px]:text-[14px] border py-2 px-7 max-[430px]:py-1 max-[430px]:px-4 rounded-xl font-bold flex justify-center cursor-pointer items-center gap-2" onClick={setpopwindow}>
                 <span>
                   <img src="/plus.png" alt="add" draggable={false} className="size-4 invert" />
                 </span>
@@ -197,26 +193,26 @@ export default function Home() {
               </div>
             </div>
             : ""}
-          <div className="track w-full flex justify-around p-4 ">
+          <div className="track w-full flex justify-around p-4 max-[430px]:p-2">
             <div className="flex flex-col justify-center font-bold">
-              <span className="text-sm text-[#ffffffb2]">Total spent</span>
-              <span className="text-xl">₹{total}</span>
+              <span className="text-sm text-[#ffffffb2] max-[300px]:text-[12px]">Total spent</span>
+              <span className="text-xl max-[430px]:text-[15px]">₹{total}</span>
             </div>
             <div className="flex flex-col justify-center font-bold">
-              <span className="text-sm text-[#ffffffb2]">This Month</span>
-              <span className="text-xl text-red-400">₹{monthcal}</span>
+              <span className="text-sm text-[#ffffffb2] max-[300px]:text-[12px]">This Month</span>
+              <span className="text-xl text-red-400 max-[430px]:text-[15px]">₹{monthcal}</span>
             </div>
             <div className="flex flex-col justify-center font-bold">
-              <span className="text-sm text-[#ffffffb2]">{mostcategory}</span>
-              <span className="text-xl">₹{cateExpenses}</span>
+              <span className="text-sm text-[#ffffffb2] max-[300px]:text-[12px]">{mostcategory}</span>
+              <span className="text-xl max-[430px]:text-[15px]">₹{cateExpenses}</span>
             </div>
           </div>
-          <div className="list bg-[#332756] rounded-2xl p-5 flex flex-col gap-5 min-h-95 max-h-95 overflow-auto">
+          <div className="list bg-[#332756] rounded-2xl max-[430px]:text-[12px] p-5 max-[430px]:p-2 flex flex-col gap-5 min-h-95 max-h-95 overflow-auto">
             <div className="flex justify-between">
               <span>
                 Recent Transactions
               </span>
-              <span className="relative" tabIndex={0} onBlur={(e) => {
+              <span className="relative max-[430px]:text-[12px]" tabIndex={0} onBlur={(e) => {
                 if (!e.currentTarget.contains(e.relatedTarget)) {
                   setdropdownlist(false);
                 }
@@ -230,32 +226,40 @@ export default function Home() {
                     <button className="border-b cursor-pointer text-start px-2" onClick={getexpenses}>
                       All categories
                     </button>
-                    {category.map((i) => (
-                      <button key={i._id} className="border-b cursor-pointer text-start px-2" onClick={ShowCategories}>
-                        {i.category}
+                    {category.map((i, indx) => (
+                      <button key={indx} className="border-b cursor-pointer text-start px-2" onClick={ShowCategories}>
+                        {i}
                       </button>
                     ))}
                   </div> : ""}
               </span>
             </div>
-            {expense.map((i) => {
-              return (
-                <div key={i._id} className="listitems  flex justify-between px-7 items-center border-b py-3">
-                  <div className="flex gap-3 items-center">
-                    <span><img src="/budget.png" alt="cart" className="size-6 invert" /></span>
-                    <div className="flex flex-col">
-                      <span className="font-bold">{i.note}</span>
-                      <span className="text-sm">{i.category} . {new Date(i.date).toLocaleDateString()}</span>
+            {expense.length === 0 ? (
+              <div className="spinner size-10 bg-white self-center rounded-full flex animate-spin justify-center">
+                <span className="bg-[#332756] w-8 h-8 rounded-full absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2"></span>
+                <span className="w-3 h-2 bg-[#332756] self-start"></span>
+              </div>
+            ) : (
+              expense?.map((i) => {
+                return (
+                  <div key={i._id} className="listitems  flex justify-between px-7 max-[430px]:px-2 items-center border-b py-3">
+                    <div className="flex gap-3 items-center">
+                      <span><img src="/budget.png" alt="cart" className="size-6 invert" /></span>
+                      <div className="flex flex-col">
+                        <span className="font-bold">{i.note}</span>
+                        <span className="text-sm max-[430px]:text-[12px]">{i.category} . {new Date(i.date).toLocaleDateString()}</span>
+                      </div>
+                    </div>
+                    <div>
+                      <span className="font-bold">
+                        -₹{i.amount}
+                      </span>
                     </div>
                   </div>
-                  <div>
-                    <span className="font-bold">
-                      -₹{i.amount}
-                    </span>
-                  </div>
-                </div>
-              )
-            })}
+                )
+              })
+            )
+            }
           </div>
         </div>
       </div>
